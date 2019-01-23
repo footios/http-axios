@@ -8,18 +8,16 @@ class FullPost extends Component {
     loadedPost: null
   };
 
-  componentDidUpdate() {
+  async componentDidUpdate() {
     if (this.props.id) {
-      // Note: calling setState inhere creates an infinite loop
-      // so we set a second if(...)
-      if (
-        !this.state.loadedPost ||
-        (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)
-      ) {
-        axios
-          .get("https://jsonplaceholder.typicode.com/posts/" + this.props.id)
-          .then(response => this.setState({ loadedPost: response.data }));
+      if (this.state.loadedPost && this.state.loadedPost.id === this.props.id) {
+        return;
       }
+      const postRes = await axios.get(
+        `http://jsonplaceholder.typicode.com/posts/${this.props.id}`
+      );
+      const loadedPost = postRes.data;
+      this.setState({ loadedPost });
     }
   }
 
