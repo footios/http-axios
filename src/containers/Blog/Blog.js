@@ -40,13 +40,15 @@ class Blog extends Component {
     ));
     let fullPost = <FullPost />;
     if (this.state.selectedPostId) {
-      fullPost = this.state.posts.find(post => {
-        if (post.id === this.state.selectedPostId) {
-          fullPost = (
-            <FullPost id={post.id} title={post.title} content={post.body} />
-          );
-        }
-      });
+      function foundId(id) {
+        return id.id === this.state.selectedPostId;
+      }
+
+      fullPost = this.state.posts
+        .find(foundId)
+        .map(post => (
+          <FullPost id={post.id} title={post.title} content={post.body} />
+        ));
     }
 
     return (
