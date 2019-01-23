@@ -35,7 +35,7 @@ class Blog extends Component {
         key={post.id}
         title={post.title}
         author={post.author}
-        clicked={() => this.postSelectedHandler(id)}
+        clicked={() => this.postSelectedHandler(post.id)}
       />
     ));
     return (
