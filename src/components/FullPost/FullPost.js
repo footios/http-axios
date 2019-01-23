@@ -8,6 +8,7 @@ class FullPost extends Component {
     loadedPost: null
   };
 
+  // from Q&A
   async componentDidUpdate() {
     if (this.props.id) {
       if (this.state.loadedPost && this.state.loadedPost.id === this.props.id) {
