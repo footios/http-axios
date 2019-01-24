@@ -38,6 +38,7 @@ class Blog extends Component {
         clicked={() => this.postSelectedHandler(post.id)}
       />
     ));
+    // ====================================
     let fullPost = <FullPost id={this.state.selectedPostId} />;
     if (this.state.selectedPostId) {
       fullPost = this.state.posts.map(post => {
@@ -48,7 +49,7 @@ class Blog extends Component {
         } else return null;
       });
     }
-
+    //========================================
     return (
       <div>
         <section className="Posts">{posts}</section>
