@@ -12,13 +12,20 @@ class FullPost extends Component {
     if (this.props.id) {
       // Note: calling setState inhere creates an infinite loop
       // so we set a second if(...)
+      // The first check is for when we haven't fetched a post yet...
+      // The second is for when we have a post in loadedPost and we want
+      // to switch to another.
       if (
         !this.state.loadedPost ||
         (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)
       ) {
         axios
           .get("https://jsonplaceholder.typicode.com/posts/" + this.props.id)
-          .then(response => this.setState({ loadedPost: response.data }));
+          .then(response => {
+            console.log(response);
+
+            this.setState({ loadedPost: response.data });
+          });
       }
     }
   }
