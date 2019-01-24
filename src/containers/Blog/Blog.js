@@ -38,17 +38,15 @@ class Blog extends Component {
         clicked={() => this.postSelectedHandler(post.id)}
       />
     ));
-    let fullPost = <FullPost />;
+    let fullPost = <FullPost id={this.state.selectedPostId} />;
     if (this.state.selectedPostId) {
-      function foundId(id) {
-        return id.id === this.state.selectedPostId;
-      }
-
-      fullPost = this.state.posts
-        .find(foundId)
-        .map(post => (
-          <FullPost id={post.id} title={post.title} content={post.body} />
-        ));
+      fullPost = this.state.posts.map(post => {
+        if (post.id === this.state.selectedPostId) {
+          return (
+            <FullPost id={post.id} title={post.title} content={post.body} />
+          );
+        } else return null;
+      });
     }
 
     return (
