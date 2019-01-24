@@ -1,5 +1,5 @@
 continued from b2 - it's a burger 3 repo
 
-### git commit -m 'initial'
+### Fetching Data on Update (without Creating Infinite Loops)
 
-git update
+Section 9, Lecture 157
