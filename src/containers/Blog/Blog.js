@@ -29,6 +29,17 @@ class Blog extends Component {
     this.setState({ selectedPostId: id });
   }
 
+  postAdded = (title, body, author, id) => {
+    this.setState(PrevState => {
+      const posts = [...PrevState.posts];
+      const NewPost = { title, body, author, id };
+      posts.push(NewPost);
+      return {
+        posts: posts
+      };
+    });
+  };
+
   render() {
     const posts = this.state.posts.map(post => (
       <Post
@@ -45,7 +56,7 @@ class Blog extends Component {
           <FullPost id={this.state.selectedPostId} />
         </section>
         <section>
-          <NewPost />
+          <NewPost added={this.postAdded} />
         </section>
       </div>
     );
