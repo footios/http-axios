@@ -32,7 +32,7 @@ class Blog extends Component {
   postAdded = (title, body, author, id) => {
     this.setState(PrevState => {
       const posts = [...PrevState.posts];
-      const NewPost = { title, body, author, id };
+      const NewPost = { title, body, author };
       posts.push(NewPost);
       return {
         posts: posts
