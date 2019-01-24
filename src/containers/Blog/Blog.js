@@ -29,15 +29,11 @@ class Blog extends Component {
     this.setState({ selectedPostId: id });
   }
 
-  postAdded = (title, body, author, id) => {
-    this.setState(PrevState => {
-      const posts = [...PrevState.posts];
-      const NewPost = { title, body, author };
-      posts.push(NewPost);
-      return {
-        posts: posts
-      };
-    });
+  postAdded = (title, body, author) => {
+    const posts = [...this.state.posts];
+    const NewPost = { title, body, author };
+    posts.push(NewPost);
+    this.setState({ posts });
   };
 
   render() {

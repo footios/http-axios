@@ -5,11 +5,17 @@ import "./NewPost.css";
 class NewPost extends Component {
   state = {
     title: "",
-    content: "",
+    body: "",
     author: ""
   };
 
+  componentDidMount = () => {
+    this.setState({ author: "Max" });
+  };
+
   render() {
+    console.log(this.state);
+
     return (
       <div className="NewPost">
         <h1>Add a Post</h1>
@@ -21,9 +27,10 @@ class NewPost extends Component {
         />
         <label>Content</label>
         <textarea
+          type="text"
           rows="4"
           value={this.state.content}
-          onChange={event => this.setState({ content: event.target.value })}
+          onChange={event => this.setState({ body: event.target.value })}
         />
         <label>Author</label>
         <select
@@ -37,9 +44,8 @@ class NewPost extends Component {
           onClick={() =>
             this.props.added(
               this.state.title,
-              this.state.content,
-              this.state.author,
-              "5"
+              this.state.body,
+              this.state.author
             )
           }
         >
