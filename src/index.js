@@ -11,6 +11,7 @@ import axios from "axios";
 // So it would be nice if we could cut it out here
 // and just send the request to get posts and automatically
 // append this to some comments starting URL.
+
 axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
 
 // common headers are simply the general headers which are set for all types of requests
