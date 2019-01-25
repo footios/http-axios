@@ -5,6 +5,19 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import axios from "axios";
 
+// Let's say the URL you are sending the requests to,
+// in your application is always the same.
+// So it's always ... and then slash something.
+// So it would be nice if we could cut it out here
+// and just send the request to get posts and automatically
+// append this to some comments starting URL.
+axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
+
+// common headers are simply the general headers which are set for all types of requests
+axios.defaults.headers.common["Authorization"] = "AUTH TOKEN";
+
+axios.defaults.headers.post["Content-Type"] = "application/json";
+
 // In case you want to execute code globaly:
 // You can do it with axios with the help of so-called interceptors,
 // these are functions you can define globally which will be executed

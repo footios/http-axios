@@ -18,9 +18,7 @@ class NewPost extends Component {
     };
     // second arg: data we sent
     // you can pass also a 3d arg to configure that request
-    axios
-      .post("https://jsonplaceholder.typicode.com/posts", data)
-      .then(response => console.log(response));
+    axios.post("/posts", data).then(response => console.log(response));
   };
 
   render() {
